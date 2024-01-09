@@ -1,12 +1,19 @@
 // import { useState } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
+import Home from "./Home";
 
 function App() {
   // const [count, setCount] = useState(0);
 
   return (
     <>
-      <h1>Legit Minute</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route index path='/' element={<Navigate to={"home"} />} />
+          <Route path='home' element={<Home />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
