@@ -13,7 +13,7 @@ function Home() {
         </ul>
         <ul style={{ listStyle: "none" }}>
           <li>
-            <select value={"FOMO"}>
+            <select defaultValue={"FOMO"}>
               <option value={""}>
                 {"Select a why you can't stop using this tech"}
               </option>
@@ -30,7 +30,7 @@ function Home() {
           </li>
           <li>
             {" "}
-            <select value={"Easy escape from reality and you feel good"}>
+            <select defaultValue={"Easy escape from reality and you feel good"}>
               <option value={""}>
                 {"Select a why you can't stop using this tech"}
               </option>
@@ -47,7 +47,7 @@ function Home() {
           </li>
           <li>
             {" "}
-            <select value={"learn in public"}>
+            <select defaultValue={"learn in public"}>
               <option value={""}>
                 {"Select a why you can't stop using this tech"}
               </option>
