@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+  body {
+    @apply text-slate-200 tracking-wide font-normal
+  }
+}
