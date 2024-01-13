@@ -1,15 +1,16 @@
 import { useState } from "react";
+import SegmentButtons from "./SegmentButtons";
 
 const defaultData = [
   {
     id: 1,
-    Response: "praying", // AH
-    Reward: "playing football", // NAH
+    Response: "praying fajr", // AH
+    Reward: "30 minutes music/10 songs", // NAH
   },
   {
     id: 2,
-    Response: "working out in gym",
-    Reward: "listening music",
+    Response: "running 4 km",
+    Reward: "5 reddit/twitter/linked post",
   },
   {
     id: 3,
@@ -76,40 +77,19 @@ const defaultData = [
     Response: "8 hours of sleeping",
     Reward: "tnine",
   },
-  {
-    id: 16,
-    Response: "68 hours of sleeping",
-    Reward: "tnine",
-  },
-  {
-    id: 17,
-    Response: "78 hours of sleeping",
-    Reward: "tnine",
-  },
-  {
-    id: 18,
-    Response: "88 hours of sleeping",
-    Reward: "tnine",
-  },
-  {
-    id: 19,
-    Response: "89 hours of sleeping",
-    Reward: "tnine",
-  },
-  {
-    id: 20,
-    Response: "82 hours of sleeping",
-    Reward: "tnine",
-  },
 ];
 
 function Home() {
-  const [segment, setSegment] = useState("Response");
+  const [currentSegment, setCurrentSegment] = useState("Response");
   const [responseReward] = useState(defaultData);
 
   function handleSegmentChange(e) {
-    setSegment(e.target.innerText);
+    setCurrentSegment(e.target.innerText);
   }
+
+  const segmentBtnTextList = Object.keys(
+    responseReward.at(0) ? responseReward.at(0) : {}
+  ).filter((el) => el !== "id");
 
   return (
     <div className='min-h-full pt-10 pb-20 bg-stone-950'>
@@ -118,33 +98,19 @@ function Home() {
           <div
             className='border-[1px] border-r-0 text-nowrap cursor-default border-l-0 border-stone-800 min-h-10 first:border-t-0 last:border-b-0 pl-3 flex items-center'
             key={list.id}
-            title={list[segment]}
+            title={list[currentSegment]}
           >
-            <p className='overflow-hidden text-ellipsis'>{list[segment]}</p>
+            <p className='overflow-hidden text-ellipsis'>
+              {list[currentSegment]}
+            </p>
           </div>
         ))}
       </div>
-
-      <div className='fixed inset-x-0 ml-auto mr-auto text-center bottom-5'>
-        <button
-          onClick={handleSegmentChange}
-          className={
-            "w-24 py-2 duration-300  rounded-tl-lg rounded-bl-lg bg-stone-800 hover:bg-stone-900" +
-            ` ${segment === "Response" ? "bg-stone-900" : ""}`
-          }
-        >
-          Response
-        </button>
-        <button
-          onClick={handleSegmentChange}
-          className={
-            "w-24 py-2 duration-300  rounded-tr-lg rounded-br-lg bg-stone-800 hover:bg-stone-900" +
-            ` ${segment === "Reward" ? "bg-stone-900" : ""}`
-          }
-        >
-          Reward
-        </button>
-      </div>
+      <SegmentButtons
+        segmentBtnTextList={segmentBtnTextList}
+        handleSegmentChange={handleSegmentChange}
+        currentSegment={currentSegment}
+      />
     </div>
   );
 }

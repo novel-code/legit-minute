@@ -5,6 +5,6 @@
 
 @layer components {
   body {
-    @apply text-slate-200 tracking-wide font-normal
+    @apply text-slate-50 tracking-wide font-normal
   }
 }
