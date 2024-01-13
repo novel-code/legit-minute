@@ -1,88 +1,149 @@
-import { useEffect, useReducer, useState } from "react";
+import { useState } from "react";
 
 const defaultData = [
   {
-    response: "praying", // AH
-    reward: "playing football", // NAH
+    id: 1,
+    Response: "praying", // AH
+    Reward: "playing football", // NAH
   },
   {
-    response: "working out in gym",
-    reward: "listening music",
+    id: 2,
+    Response: "working out in gym",
+    Reward: "listening music",
   },
   {
-    response: "creating content on LinkedIn",
-    reward: "watching youtube",
+    id: 3,
+    Response: "creating content on LinkedIn",
+    Reward: "watching youtube",
   },
   {
-    response: "creating content for novel code",
-    reward: "scrolling on LinkedIn",
+    id: 4,
+    Response: "creating content for novel code",
+    Reward: "scrolling on LinkedIn",
   },
   {
-    response: "creating personal projects",
-    reward: "eating food processed food",
+    id: 5,
+    Response: "creating personal projects",
+    Reward: "eating food processed food",
   },
   {
-    response: "books/articles/blogs/linkedin implementing immediately on any A",
-    reward: "two",
+    id: 6,
+    Response: "books/articles/blogs/linkedin implementing immediately on any A",
+    Reward: "two",
   },
   {
-    response: "gathering info through books",
-    reward: "five",
+    id: 7,
+    Response: "gathering info through books",
+    Reward: "five",
   },
   {
-    response: "creating software based of book summary",
-    reward: "eight",
+    id: 8,
+    Response: "creating software based of book summary",
+    Reward: "eight",
   },
   {
-    response: "eating healty food",
-    reward: "eleven",
+    id: 9,
+    Response: "eating healty food",
+    Reward: "eleven",
   },
   {
-    response: "netwoking/connecting/socializing/talking ",
-    reward: "fourteen",
+    id: 10,
+    Response: "netwoking/connecting/socializing/talking ",
+    Reward: "fourteen",
   },
   {
-    response: "helping people",
-    reward: "seventeen",
+    id: 11,
+    Response: "helping people",
+    Reward: "seventeen",
   },
   {
-    response: "working on busines",
-    reward: "twenty",
+    id: 12,
+    Response: "working on busines",
+    Reward: "twenty",
   },
   {
-    response: "solving own problems",
-    reward: "tthree",
+    id: 13,
+    Response: "solving own problems",
+    Reward: "tthree",
   },
   {
-    response: "learning new stuff through building",
-    reward: "tsix",
+    id: 14,
+    Response: "learning new stuff through building",
+    Reward: "tsix",
   },
   {
-    response: "8 hours of sleeping",
-    reward: "tnine",
+    id: 15,
+    Response: "8 hours of sleeping",
+    Reward: "tnine",
+  },
+  {
+    id: 16,
+    Response: "68 hours of sleeping",
+    Reward: "tnine",
+  },
+  {
+    id: 17,
+    Response: "78 hours of sleeping",
+    Reward: "tnine",
+  },
+  {
+    id: 18,
+    Response: "88 hours of sleeping",
+    Reward: "tnine",
+  },
+  {
+    id: 19,
+    Response: "89 hours of sleeping",
+    Reward: "tnine",
+  },
+  {
+    id: 20,
+    Response: "82 hours of sleeping",
+    Reward: "tnine",
   },
 ];
 
 function Home() {
-  console.log("rendering");
+  const [segment, setSegment] = useState("Response");
+  const [responseReward] = useState(defaultData);
+
+  function handleSegmentChange(e) {
+    setSegment(e.target.innerText);
+  }
+
   return (
-    // <div className='h-full bg-stone-950 sm:bg-red-600 md:bg-blue-600 lg:bg-green-500'>
-    <div className='h-full bg-stone-950'>
-      <div className='absolute inset-x-0 ml-auto mr-auto text-center bottom-5'>
-        <button className='w-24 py-2 rounded-tl-lg rounded-bl-lg bg-stone-800 hover:bg-stone-900 '>
+    <div className='min-h-full pt-10 pb-20 bg-stone-950'>
+      <div>
+        {responseReward.map((list) => (
+          <div
+            className='border-[1px] border-r-0 text-nowrap cursor-default border-l-0 border-stone-800 min-h-10 first:border-t-0 last:border-b-0 pl-3 flex items-center'
+            key={list.id}
+            title={list[segment]}
+          >
+            <p className='overflow-hidden text-ellipsis'>{list[segment]}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className='fixed inset-x-0 ml-auto mr-auto text-center bottom-5'>
+        <button
+          onClick={handleSegmentChange}
+          className={
+            "w-24 py-2 duration-300  rounded-tl-lg rounded-bl-lg bg-stone-800 hover:bg-stone-900" +
+            ` ${segment === "Response" ? "bg-stone-900" : ""}`
+          }
+        >
           Response
         </button>
-        <button className='w-24 py-2 rounded-tr-lg rounded-br-lg bg-stone-800 hover:bg-stone-900'>
+        <button
+          onClick={handleSegmentChange}
+          className={
+            "w-24 py-2 duration-300  rounded-tr-lg rounded-br-lg bg-stone-800 hover:bg-stone-900" +
+            ` ${segment === "Reward" ? "bg-stone-900" : ""}`
+          }
+        >
           Reward
         </button>
-        {/* <span className='inline-flex -space-x-px overflow-hidden bg-white border rounded-md shadow-sm dark:border-gray-800 dark:bg-gray-900'>
-          <button className='inline-block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:relative dark:text-gray-200 dark:hover:bg-gray-800'>
-            Response
-          </button>
-          <button className='inline-block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:relative dark:text-gray-200 dark:hover:bg-gray-800'>
-            Reward
-          </button>
-        </span> */}
       </div>
     </div>
   );

@@ -29,7 +29,9 @@ function AppLayout() {
   */
 
   return (
-    <div className='h-dvh'>
+    <div className='relative h-screen bg-red-400'>
+      {/* <h3>Legit Minute</h3> */}
+
       <Outlet />
     </div>
   );
