@@ -6,77 +6,71 @@ const defaultData = [
   {
     id: 1,
     Response: "praying fajr", // AH
-    Reward: "30 minutes music/10 songs", // NAH
+    Reward: "4 songs", // NAH
   },
   {
     id: 2,
     Response: "running 4 km",
-    Reward: "5 reddit/twitter/linked post",
+    Reward: "4 reddit posts",
   },
   {
     id: 3,
-    Response: "creating content on LinkedIn",
-    Reward: "watching youtube",
+    Response: "host worldwise",
+    Reward: "1 youtube video",
   },
   {
     id: 4,
-    Response: "creating content for novel code",
-    Reward: "scrolling on LinkedIn",
+    Response:
+      "research remote jobs on https://thecodedose.com/blog/websites-to-find-remote-tech-jobs/",
+    Reward: "3 songs",
   },
   {
     id: 5,
-    Response: "creating personal projects",
-    Reward: "eating food processed food",
+    Response:
+      "note the linkedin accouts which post javascript/react js (content/ courses)",
+    Reward: "4 twitter posts",
   },
   {
     id: 6,
-    Response: "books/articles/blogs/linkedin implementing immediately on any A",
-    Reward: "two",
+    Response:
+      "search on youtube for --> reactjs turing test, react js uplers interview questions, react js interview questions.",
+    Reward: "1 youtube video",
   },
   {
     id: 7,
-    Response: "gathering info through books",
-    Reward: "five",
+    Response: "study html/css documents",
+    Reward: "3 songs",
   },
   {
     id: 8,
-    Response: "creating software based of book summary",
-    Reward: "eight",
+    Response:
+      "find good react blog post for interviews and learn for interview",
+    Reward: "4 LinkedIn posts",
   },
   {
     id: 9,
-    Response: "eating healty food",
-    Reward: "eleven",
+    Response: "study js documents",
+    Reward: "1 youtube video",
   },
   {
     id: 10,
-    Response: "netwoking/connecting/socializing/talking ",
-    Reward: "fourteen",
+    Response: "practice coding challenges in react js",
+    Reward: "2 songs",
   },
   {
     id: 11,
-    Response: "helping people",
-    Reward: "seventeen",
+    Response: "study react documents",
+    Reward: "3 posts",
   },
   {
     id: 12,
-    Response: "working on busines",
-    Reward: "twenty",
+    Response: "attend turing test / uplears ",
+    Reward: "1 youtube video",
   },
   {
     id: 13,
-    Response: "solving own problems",
-    Reward: "tthree",
-  },
-  {
-    id: 14,
-    Response: "learning new stuff through building",
-    Reward: "tsix",
-  },
-  {
-    id: 15,
     Response: "8 hours of sleeping",
-    Reward: "tnine",
+    Reward: "random photo of yours",
   },
 ];
 
@@ -116,7 +110,8 @@ function Home() {
   }
 
   return (
-    <div className='min-h-full pt-10 pb-20 bg-stone-950'>
+    <div className='min-h-full pb-20 bg-stone-950'>
+      <h1 className='p-3 text-lg text-center '>Legit Minute</h1>
       <div {...handlers}>
         {responseReward.map((list) => (
           <div
