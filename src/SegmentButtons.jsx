@@ -10,8 +10,8 @@ function SegmentButtons({
           key={seg}
           onClick={handleSegmentChange}
           className={
-            "w-24 py-2 duration-300   bg-stone-800 hover:bg-stone-900" +
-            ` ${currentSegment === seg ? "bg-stone-900" : ""} ${
+            "w-24 py-2 duration-300 lg:hover:bg-stone-900 bg-stone-800 " +
+            ` ${currentSegment === seg ? "bg-stone-900 " : " "} ${
               i === 0
                 ? "rounded-tl-lg rounded-bl-lg"
                 : i === arr.length - 1
