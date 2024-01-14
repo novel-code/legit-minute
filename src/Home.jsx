@@ -2,6 +2,8 @@ import { useState } from "react";
 import SegmentButtons from "./SegmentButtons";
 import { useSwipeable } from "react-swipeable";
 import List from "./ui/List";
+import ResponseListItem from "./features/ResponseListItem";
+import RewardListItem from "./features/RewardListItem";
 
 const defaultData = [
   {
@@ -116,7 +118,19 @@ function Home() {
       <List
         handlers={handlers}
         responseReward={responseReward}
-        currentSegment={currentSegment}
+        render={(listItem) => (
+          <div
+            className='border-[1px] border-r-0 text-nowrap cursor-default border-l-0 border-stone-800 min-h-10 first:border-t-0 last:border-b-0 pl-3 flex items-center'
+            key={listItem.id}
+            title={listItem[currentSegment]}
+          >
+            {currentSegment === "Response" ? (
+              <ResponseListItem responseTextValue={listItem[currentSegment]} />
+            ) : (
+              <RewardListItem rewardTextValue={listItem[currentSegment]} />
+            )}
+          </div>
+        )}
       />
       <SegmentButtons
         segmentBtnTextList={segmentBtnTextList}
