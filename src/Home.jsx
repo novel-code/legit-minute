@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SegmentButtons from "./SegmentButtons";
+import { useSwipeable } from "react-swipeable";
 
 const defaultData = [
   {
@@ -91,9 +92,32 @@ function Home() {
     responseReward.at(0) ? responseReward.at(0) : {}
   ).filter((el) => el !== "id");
 
+  const handlers = useSwipeable({
+    onSwipedLeft: handleSwipeLeft,
+    onSwipedRight: handleSwipeRight,
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+
+  function handleSwipeLeft() {
+    setCurrentSegment((prev) => {
+      const index = segmentBtnTextList.indexOf(prev);
+      if (index === segmentBtnTextList.length - 1) return prev;
+      return segmentBtnTextList[index + 1];
+    });
+  }
+
+  function handleSwipeRight() {
+    setCurrentSegment((prev) => {
+      const index = segmentBtnTextList.indexOf(prev);
+      if (index === 0) return prev;
+      return segmentBtnTextList[index - 1];
+    });
+  }
+
   return (
     <div className='min-h-full pt-10 pb-20 bg-stone-950'>
-      <div>
+      <div {...handlers}>
         {responseReward.map((list) => (
           <div
             className='border-[1px] border-r-0 text-nowrap cursor-default border-l-0 border-stone-800 min-h-10 first:border-t-0 last:border-b-0 pl-3 flex items-center'
