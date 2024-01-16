@@ -1,6 +1,7 @@
 import { useState } from "react";
-import SegmentButtons from "./SegmentButtons";
+import SegmentButtons from "../SegmentButtons";
 import { useSwipeable } from "react-swipeable";
+import List from "../ui/List";
 
 const defaultData = [
   {
@@ -112,19 +113,11 @@ function Home() {
   return (
     <div className='min-h-full pb-20 bg-stone-950'>
       <h1 className='p-3 text-lg text-center '>Legit Minute</h1>
-      <div {...handlers}>
-        {responseReward.map((list) => (
-          <div
-            className='border-[1px] border-r-0 text-nowrap cursor-default border-l-0 border-stone-800 min-h-10 first:border-t-0 last:border-b-0 pl-3 flex items-center'
-            key={list.id}
-            title={list[currentSegment]}
-          >
-            <p className='overflow-hidden text-ellipsis'>
-              {list[currentSegment]}
-            </p>
-          </div>
-        ))}
-      </div>
+      <List
+        handlers={handlers}
+        responseReward={responseReward}
+        currentSegment={currentSegment}
+      />
       <SegmentButtons
         segmentBtnTextList={segmentBtnTextList}
         handleSegmentChange={handleSegmentChange}
