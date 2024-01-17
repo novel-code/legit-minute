@@ -14,8 +14,6 @@ function RewardListItem({ rewardTextValue, contentList }) {
     setShowContentList((prev) => !prev);
   }
 
-  console.log("currentYtVideo", currentYtVideo);
-
   return (
     <>
       <div
@@ -33,6 +31,7 @@ function RewardListItem({ rewardTextValue, contentList }) {
                   <iframe
                     className='w-full px-2 py-2'
                     src={currentYtVideo.url}
+                    // src={"https://www.youtube.com/embed/6eeKK2D7Xs0"}
                     title={currentYtVideo.title}
                     allowFullScreen={true}
                     allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
