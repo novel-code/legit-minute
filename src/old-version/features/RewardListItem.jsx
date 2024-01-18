@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ContentListPopup from "../ui/ContentListPopup";
+import ContentListPopup from "../../ui/ContentListPopup";
 import { createPortal } from "react-dom";
 
 function RewardListItem({ rewardTextValue, contentList }) {

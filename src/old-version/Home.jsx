@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import SegmentButtons from "./SegmentButtons";
+import SegmentButtons from "../SegmentButtons";
 import { useSwipeable } from "react-swipeable";
-import List from "./ui/List";
-import ResponseListItem from "./features/ResponseListItem";
-import RewardListItem from "./features/RewardListItem";
+import List from "../ui/List";
+import ResponseListItem from "../features/ResponseListItem";
+import RewardListItem from "../features/RewardListItem";
 import axios from "axios";
 // api key:  AIzaSyAqvsIErWUE79WBKarIlAV8l4zHU8KToEQ
 // client id:  291820083427-agaah4t9359vppoiidgg06dc4l9gecj8.apps.googleusercontent.com
