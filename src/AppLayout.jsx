@@ -3,6 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 function AppLayout() {
   return (
     <div className='relative h-screen '>
+      <h1 className='p-3 text-lg text-center '>Legit Minute</h1>
       <Outlet />
       <div className='fixed inset-x-0 ml-auto mr-auto text-center bottom-5 '>
         <NavLink
