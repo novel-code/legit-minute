@@ -3,7 +3,7 @@ import { useSongs } from "../hooks/useSongs";
 function Reward() {
   const { songs } = useSongs();
 
-  console.log("ss", songs);
+  console.log("songs", songs);
   return <div>Reward</div>;
 }
 
