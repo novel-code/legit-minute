@@ -3,6 +3,7 @@ import { useUserDataOrInsert } from "../hooks/useUserDataOrInsert";
 import List from "../ui/List";
 import ResponseListItem from "../ui/ResponseListItem";
 import { useNavigate } from "react-router-dom";
+import useLongPress from "../hooks/useLongPress";
 
 const PAGE = "response";
 function Response() {
@@ -19,6 +20,20 @@ function Response() {
     navigate("/reward");
   }
 
+  const onLongPress = () => {
+    console.log("longpress is triggered");
+  };
+
+  const onClick = () => {
+    console.log("click is triggered");
+  };
+
+  const defaultOptions = {
+    shouldPreventDefault: true,
+    delay: 500,
+  };
+  const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
+
   if (isLoading) return <div>Loading</div>;
 
   return (
@@ -28,6 +43,7 @@ function Response() {
         responseReward={responseAndRewardList}
         render={(listItem) => (
           <div
+            {...longPressEvent}
             className='border-[1px] border-r-0 text-nowrap cursor-default border-l-0 border-stone-800 min-h-10 first:border-t-0 border-b-0 pl-3 flex items-center'
             key={listItem.id}
             title={listItem[PAGE]}
