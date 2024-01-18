@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ContentListPopup from "../../ui/ContentListPopup";
+import ContentListPopup from "./ContentListPopup";
 import { createPortal } from "react-dom";
 
 function RewardListItem({ rewardTextValue, contentList }) {
@@ -8,6 +8,8 @@ function RewardListItem({ rewardTextValue, contentList }) {
     url: contentList?.at(0)?.url,
     title: contentList?.at(0)?.title,
   });
+
+  console.log("reward item");
 
   function handleRewardClick() {
     console.log("show content popup with list");
@@ -42,7 +44,7 @@ function RewardListItem({ rewardTextValue, contentList }) {
                 {contentList?.map((el) => (
                   // border-[1px] border-r-0 text-nowrap cursor-default border-l-0 border-stone-800 min-h-10 first:border-t-0 last:border-b-0 pl-3 flex items-center
                   <div
-                    className='pt-2 border-[1px] border-r-0 border-l-0 border-t-0 last:border-b-0   whitespace-nowrap text-ellipsis overflow-hidden min-h-10 border-stone-800'
+                    className='pt-2 border-[1px] border-r-0 border-l-0 border-t-0 last:border-b-0   whitespace-nowrap text-ellipsis overflow-hidden min-h-10 border-stone-800 cursor-pointer'
                     onClick={() =>
                       setCurrentYtVideo({ url: el.url, title: el.title })
                     }
