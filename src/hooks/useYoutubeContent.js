@@ -77,7 +77,7 @@ export function useYoutubeContent() {
           });
         });
 
-      return { data: allYoutubeVids };
+      return allYoutubeVids;
     },
   });
 
