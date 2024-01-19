@@ -16,7 +16,8 @@ export function useUserDataOrInsert() {
       const { data, error } = await supabase
         .from("response-reward")
         .select("id,response,reward,isCompleted")
-        .eq("user_id", user_id);
+        .eq("user_id", user_id)
+        .order("id", { ascending: true });
       if (error)
         throw new Error("Error occured while getting data for existing user");
 
@@ -24,7 +25,8 @@ export function useUserDataOrInsert() {
         const { data, error } = await supabase
           .from("response-reward")
           .insert(defaultData)
-          .select("id,response,reward,isCompleted");
+          .select("id,response,reward,isCompleted")
+          .order("id", { ascending: true });
         if (error)
           throw new Error("Error occured while inserting data for new user");
         return data;
