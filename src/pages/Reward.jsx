@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useUserDataOrInsert } from "../hooks/useUserDataOrInsert";
-import List from "../ui/List";
 import RewardListItem from "../ui/RewardListItem";
 import { useSwipeable } from "react-swipeable";
 import { useSongs } from "../hooks/useSongs";
 import { useYoutubeContent } from "../hooks/useYoutubeContent";
+import { useJokes } from "../hooks/useJokes";
+import JokeListItem from "../ui/JokeListItem";
 
 const PAGE = "reward";
 function Reward() {
@@ -12,6 +13,7 @@ function Reward() {
   const navigate = useNavigate();
   const { songs, isLoading: isLoadingSongs } = useSongs();
   const { data: youtube, isLoading: isLoadingYoutube } = useYoutubeContent();
+  const { data: jokes, isLoading: isLoadingJokes } = useJokes();
 
   const handlers = useSwipeable({
     onSwipedRight: handleSwipeRight,
@@ -22,13 +24,13 @@ function Reward() {
     navigate("/response");
   }
 
-  if (isLoading || isLoadingSongs || isLoadingYoutube)
+  if (isLoading || isLoadingSongs || isLoadingYoutube || isLoadingJokes)
     return <div className='mt-20 text-center'>Loading...</div>;
 
   const allContentResp = {
     songs: songs,
     youtube: youtube,
-    jokes: [],
+    jokes: jokes,
     facts: [],
     quotes: [],
     news: [],
@@ -38,7 +40,6 @@ function Reward() {
     const helper = el[PAGE].split(" ");
     const qty = Number(helper.at(0));
     const contentType = helper.at(1);
-    console.log("allContentResp[contentType]", allContentResp[contentType]);
     const releventContent = allContentResp[contentType].slice(0, qty);
 
     return releventContent;
@@ -55,11 +56,21 @@ function Reward() {
             key={listItem.id}
             title={listItem[PAGE]}
           >
-            <RewardListItem
-              showReward={listItem.isCompleted}
-              rewardTextValue={listItem[PAGE]}
-              contentList={content.at(index)}
-            />
+            {listItem[PAGE].split(" ").at(-1) === "jokes" ? (
+              <JokeListItem
+                showReward={listItem.isCompleted}
+                rewardTextValue={listItem[PAGE]}
+                contentList={content.at(index)}
+              />
+            ) : null}
+            {listItem[PAGE].split(" ").at(-1) === "songs" ||
+            listItem[PAGE].split(" ").at(-1) === "youtube" ? (
+              <RewardListItem
+                showReward={listItem.isCompleted}
+                rewardTextValue={listItem[PAGE]}
+                contentList={content.at(index)}
+              />
+            ) : null}
           </div>
         ))}
       </div>
