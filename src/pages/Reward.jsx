@@ -6,6 +6,8 @@ import { useSongs } from "../hooks/useSongs";
 import { useYoutubeContent } from "../hooks/useYoutubeContent";
 import { useJokes } from "../hooks/useJokes";
 import JokeListItem from "../ui/JokeListItem";
+import { useQuotes } from "../hooks/useQuotes";
+import QuoteListItem from "../ui/QuoteListItem";
 
 const PAGE = "reward";
 function Reward() {
@@ -14,6 +16,7 @@ function Reward() {
   const { songs, isLoading: isLoadingSongs } = useSongs();
   const { data: youtube, isLoading: isLoadingYoutube } = useYoutubeContent();
   const { data: jokes, isLoading: isLoadingJokes } = useJokes();
+  const { data: quotes, isLoading: isLoadingQuotes } = useQuotes();
 
   const handlers = useSwipeable({
     onSwipedRight: handleSwipeRight,
@@ -32,7 +35,7 @@ function Reward() {
     youtube: youtube,
     jokes: jokes,
     facts: [],
-    quotes: [],
+    quotes: quotes,
     news: [],
   };
 
@@ -56,6 +59,13 @@ function Reward() {
             key={listItem.id}
             title={listItem[PAGE]}
           >
+            {listItem[PAGE].split(" ").at(-1) === "quotes" ? (
+              <QuoteListItem
+                showReward={listItem.isCompleted}
+                rewardTextValue={listItem[PAGE]}
+                contentList={content.at(index)}
+              />
+            ) : null}
             {listItem[PAGE].split(" ").at(-1) === "jokes" ? (
               <JokeListItem
                 showReward={listItem.isCompleted}
