@@ -28,7 +28,7 @@ function ProtectedRoute({ children }) {
   );
 
   // 3. while loading, show a spinner
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p className='mt-4 text-center'>Loading...</p>;
 
   // 4. If there IS a user, render the app
 

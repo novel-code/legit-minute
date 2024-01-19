@@ -12,8 +12,11 @@ export function useUpdateResponseItem() {
       let query = supabase.from("response-reward");
 
       if (!response) query = query.update({ isCompleted }).eq("id", id);
-      if (response?.trim())
+      if (response?.trim()) {
+        if (response?.trim()?.length > 60)
+          throw new Error("less than 60 charecters please");
         query = query.update({ response, isCompleted: false }).eq("id", id);
+      }
 
       const { error } = await query;
 

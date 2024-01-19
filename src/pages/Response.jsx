@@ -53,7 +53,8 @@ function Response() {
   const { onMouseDown, onMouseLeave, onMouseUp, onTouchEnd, onTouchStart } =
     useLongPress(onLongPress, onClick, defaultOptions);
 
-  if (isLoading || isLoading2) return <div>Loading</div>;
+  if (isLoading || isLoading2)
+    return <div className='mt-20 text-center'>Loading...</div>;
 
   return (
     <div className='min-h-full pb-20 bg-stone-950'>
@@ -68,13 +69,16 @@ function Response() {
               onTouchStart={(e) => onTouchStart(e, listItem)}
               className={
                 "border-[1px] border-r-0 text-nowrap cursor-default border-l-0 border-stone-800 min-h-10 last:border-b-0 border-t-0   pl-3 flex items-center " +
-                `${listItem.isCompleted ? "line-through" : ""} ${
+                ` ${
                   updatingResponseTextId !== listItem.id ? "block" : "hidden"
                 }`
               }
               title={listItem[PAGE]}
             >
-              <ResponseListItem responseTextValue={listItem[PAGE]} />
+              <ResponseListItem
+                isCompleted={listItem.isCompleted}
+                responseTextValue={listItem[PAGE]}
+              />
             </div>
 
             <div

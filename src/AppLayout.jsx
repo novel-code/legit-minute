@@ -1,6 +1,9 @@
 import { NavLink, Outlet } from "react-router-dom";
+import { useAuth } from "./hooks/useAuth";
 
 function AppLayout() {
+  const { signOut } = useAuth();
+
   return (
     <div className='relative h-screen '>
       <h1 className='p-3 text-lg text-center '>Legit Minute</h1>
@@ -26,6 +29,12 @@ function AppLayout() {
         >
           Reward
         </NavLink>
+        <button
+          onClick={signOut}
+          className='fixed text-xs underline left-2 bottom-2 text-stone-400'
+        >
+          Sign Out
+        </button>
       </div>
     </div>
   );

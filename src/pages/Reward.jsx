@@ -23,7 +23,7 @@ function Reward() {
   }
 
   if (isLoading || isLoadingSongs || isLoadingYoutube)
-    return <div>Loading</div>;
+    return <div className='mt-20 text-center'>Loading...</div>;
 
   const allContentResp = {
     songs: songs,
@@ -46,7 +46,24 @@ function Reward() {
 
   return (
     <div className='min-h-full pb-20 bg-stone-950'>
-      <List
+      <div {...handlers}>
+        {responseAndRewardList.map((listItem, index) => (
+          <div
+            className={
+              "border-[1px] border-r-0 text-nowrap cursor-default border-l-0 border-stone-800 min-h-10 first:border-t-0 border-b-0 pl-3 flex items-center "
+            }
+            key={listItem.id}
+            title={listItem[PAGE]}
+          >
+            <RewardListItem
+              showReward={listItem.isCompleted}
+              rewardTextValue={listItem[PAGE]}
+              contentList={content.at(index)}
+            />
+          </div>
+        ))}
+      </div>
+      {/* <List
         handlers={handlers}
         responseReward={responseAndRewardList}
         render={(listItem, index) => (
@@ -61,7 +78,7 @@ function Reward() {
             />
           </div>
         )}
-      />
+      /> */}
     </div>
   );
 }

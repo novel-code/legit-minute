@@ -2,16 +2,15 @@ import { useState } from "react";
 import ContentListPopup from "./ContentListPopup";
 import { createPortal } from "react-dom";
 
-function RewardListItem({ rewardTextValue, contentList }) {
+function RewardListItem({ rewardTextValue, contentList, showReward }) {
   const [showContentList, setShowContentList] = useState(false);
   const [currentYtVideo, setCurrentYtVideo] = useState({
     url: contentList?.at(0)?.url,
     title: contentList?.at(0)?.title,
   });
 
-  console.log("reward item");
-
   function handleRewardClick() {
+    if (!showReward) return;
     console.log("show content popup with list");
     setShowContentList((prev) => !prev);
   }
@@ -20,7 +19,10 @@ function RewardListItem({ rewardTextValue, contentList }) {
     <>
       <div
         onClick={handleRewardClick}
-        className='w-full py-1 overflow-hidden text-ellipsis'
+        className={
+          "w-full py-1 overflow-hidden text-ellipsis " +
+          `${showReward ? "" : "blur-[2px] line-through"}`
+        }
       >
         {rewardTextValue}
       </div>
