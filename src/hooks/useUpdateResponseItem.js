@@ -6,22 +6,26 @@ export function useUpdateResponseItem() {
   const supabase = useSupabaseClient();
   const queryClient = useQueryClient();
 
-  const { mutate: updateIsCompleted, isLoading } = useMutation({
-    mutationFn: async function apiIsCompleted({ isCompleted, id }) {
-      const { error } = await supabase
-        .from("response-reward")
-        .update({ isCompleted: isCompleted })
-        .eq("id", id);
+  const { mutate: updateResponseItem, isLoading } = useMutation({
+    mutationFn: async function apiIsCompleted({ isCompleted, id, response }) {
+      // response is response item's text (task)
+      let query = supabase.from("response-reward");
+
+      if (!response) query = query.update({ isCompleted }).eq("id", id);
+      if (response?.trim())
+        query = query.update({ response, isCompleted: false }).eq("id", id);
+
+      const { error } = await query;
 
       if (error) {
         console.error(error);
         throw new Error("Response could not be updated");
       }
+    },
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["alldata"],
       });
-    },
-    onSuccess: () => {
       toast.success("Updated successfully");
     },
     onError: (error) => {
@@ -29,5 +33,5 @@ export function useUpdateResponseItem() {
     },
   });
 
-  return { updateIsCompleted, isLoading };
+  return { updateResponseItem, isLoading };
 }

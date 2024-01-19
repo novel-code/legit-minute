@@ -10,8 +10,9 @@ const PAGE = "response";
 function Response() {
   const { data: responseAndRewardList, isLoading } = useUserDataOrInsert();
   const navigate = useNavigate();
-  const { updateIsCompleted, isLoading: isLoading2 } = useUpdateResponseItem();
+  const { updateResponseItem, isLoading: isLoading2 } = useUpdateResponseItem();
   const [updatingResponseTextId, setUpdatingResponseTextId] = useState("");
+  const [responseInput, setResponseInput] = useState("");
 
   const handlers = useSwipeable({
     onSwipedLeft: handleSwipeLeft,
@@ -23,25 +24,26 @@ function Response() {
     navigate("/reward");
   }
 
-  function updateResponseText() {
-    // make api call
+  function updateResponseText(itemId) {
+    updateResponseItem({ response: responseInput, id: itemId });
     setUpdatingResponseTextId("");
   }
 
   const onLongPress = (e, listItem) => {
     if (updatingResponseTextId !== "") {
-      updateResponseText();
+      updateResponseText(updatingResponseTextId);
     } else {
       setUpdatingResponseTextId(listItem.id);
+      setResponseInput(listItem.response);
     }
   };
 
   const onClick = (e, listItem) => {
     if (updatingResponseTextId !== "") {
-      updateResponseText();
+      updateResponseText(updatingResponseTextId);
       return;
     }
-    updateIsCompleted({ isCompleted: !listItem.isCompleted, id: listItem.id });
+    updateResponseItem({ isCompleted: !listItem.isCompleted, id: listItem.id });
   };
 
   const defaultOptions = {
@@ -84,9 +86,10 @@ function Response() {
               }
             >
               <input
+                value={responseInput}
+                onChange={(e) => setResponseInput(e.target.value)}
                 autoFocus={true}
                 className='w-full outline-none bg-stone-900 '
-                defaultValue={listItem[PAGE]}
               />
             </div>
           </div>
