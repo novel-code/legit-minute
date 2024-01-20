@@ -38,7 +38,9 @@ export function useYoutubeContent() {
         (el) => el.snippet.resourceId.channelId
       );
 
-      const allChannelIds = helpr.slice(slice).slice(-5);
+      let allChannelIds = helpr.slice(slice, slice + 5);
+
+      if (allChannelIds.length === 0) allChannelIds = helpr.slice(0, 5);
 
       let allUploadIds = [];
       let allYoutubeVids = [];

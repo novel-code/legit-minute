@@ -11,7 +11,6 @@ function RewardListItem({ rewardTextValue, contentList, showReward }) {
 
   function handleRewardClick() {
     if (!showReward) return;
-    console.log("show content popup with list");
     setShowContentList((prev) => !prev);
   }
 
