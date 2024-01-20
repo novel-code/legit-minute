@@ -4,8 +4,6 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./ProtectedRoute";
 import Response from "./pages/Response";
 import Reward from "./pages/Reward";
-// import { GoogleOAuthProvider } from "@react-oauth/google";
-// import { CLIENT_ID } from "./constants";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
@@ -23,7 +21,6 @@ function App() {
 
   return (
     <>
-      {/* <GoogleOAuthProvider clientId={CLIENT_ID}> */}
       <SessionContextProvider supabaseClient={supabase}>
         <QueryClientProvider client={queryClient}>
           <ReactQueryDevtools initialIsOpen={false} />
@@ -68,13 +65,8 @@ function App() {
           />
         </QueryClientProvider>
       </SessionContextProvider>
-      {/* </GoogleOAuthProvider> */}
     </>
   );
 }
 
 export default App;
-{
-  /* <Route index path='/' element={<Navigate to={"home"} />} />
-            <Route path='home' element={<Home />} /> */
-}

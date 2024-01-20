@@ -88,22 +88,6 @@ function Reward() {
           </div>
         ))}
       </div>
-      {/* <List
-        handlers={handlers}
-        responseReward={responseAndRewardList}
-        render={(listItem, index) => (
-          <div
-            className='border-[1px] border-r-0 text-nowrap cursor-default border-l-0 border-stone-800 min-h-10 first:border-t-0 border-b-0 pl-3 flex items-center'
-            key={listItem.id}
-            title={listItem[PAGE]}
-          >
-            <RewardListItem
-              rewardTextValue={listItem[PAGE]}
-              contentList={content.at(index)}
-            />
-          </div>
-        )}
-      /> */}
     </div>
   );
 }

@@ -21,7 +21,5 @@ export function useJokes() {
     },
   });
 
-  // https://v2.jokeapi.dev/joke/Any?amount=4
-
   return { data, isLoading };
 }

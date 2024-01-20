@@ -19,24 +19,6 @@ function Login() {
     signIn();
   }
 
-  // function googleSignOut() {
-  //   signOut();
-  // }
-
-  // console.log(session);
-
-  // if (session)
-  //   return (
-  //     <>
-  //       <div>{session.user.email}</div>;
-  //       <button onClick={googleSignOut}>Sign Out</button>
-  //     </>
-  //   );
-
-  // if (isLoading) {
-  //   return <p>Loading</p>;
-  // }
-
   return (
     <div>
       <div className='mt-20 text-center '>
