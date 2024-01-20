@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { API_KEY } from "../constants";
 import axios from "axios";
 import { useSession } from "@supabase/auth-helpers-react";
 
@@ -10,7 +9,9 @@ export function useYoutubeContent() {
     retry: false,
     queryFn: async function getYoutubeContent() {
       const response = await axios.get(
-        `https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet%2CcontentDetails&mine=true&maxResults=35&key=${API_KEY}`,
+        `https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet%2CcontentDetails&mine=true&maxResults=35&key=${
+          import.meta.env.VITE_API_KEY
+        }`,
         {
           headers: {
             Authorization: "Bearer " + session.provider_token,
@@ -49,7 +50,9 @@ export function useYoutubeContent() {
         .all(
           allChannelIds.map((channelId) =>
             axios.get(
-              `https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&id=${channelId}&key=${API_KEY}`
+              `https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&id=${channelId}&key=${
+                import.meta.env.VITE_API_KEY
+              }`
             )
           )
         )
@@ -57,13 +60,18 @@ export function useYoutubeContent() {
           allUploadIds = data.map(
             (el) => el.data.items.at(0).contentDetails.relatedPlaylists.uploads
           );
-        });
+        })
+        .catch((err) =>
+          console.error("allChannelIds -> allUploadIds " + err.message)
+        );
 
       await axios
         .all(
           allUploadIds.map((uploadId) =>
             axios.get(
-              `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=1&playlistId=${uploadId}&key=${API_KEY}`
+              `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=1&playlistId=${uploadId}&key=${
+                import.meta.env.VITE_API_KEY
+              }`
             )
           )
         )
@@ -77,7 +85,10 @@ export function useYoutubeContent() {
               }`,
             };
           });
-        });
+        })
+        .catch((err) =>
+          console.error("allUploadIds -> allYoutubeVids " + err.message)
+        );
 
       return allYoutubeVids;
     },

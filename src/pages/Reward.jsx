@@ -47,7 +47,7 @@ function Reward() {
     const helper = el[PAGE].split(" ");
     const qty = Number(helper.at(0));
     const contentType = helper.at(1);
-    const releventContent = allContentResp[contentType].slice(0, qty);
+    const releventContent = allContentResp[contentType]?.slice(0, qty);
 
     return releventContent;
   });

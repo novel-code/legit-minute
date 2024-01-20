@@ -1,4 +1,3 @@
-import { SCOPE } from "../constants";
 import toast from "react-hot-toast";
 import {
   useSession,
@@ -15,7 +14,7 @@ export function useAuth() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        scopes: SCOPE,
+        scopes: import.meta.env.VITE_SCOPE,
       },
     });
 
