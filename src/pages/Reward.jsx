@@ -27,16 +27,20 @@ function Reward() {
     navigate("/response");
   }
 
-  if (isLoading || isLoadingSongs || isLoadingYoutube || isLoadingJokes)
+  if (
+    isLoading ||
+    isLoadingSongs ||
+    isLoadingYoutube ||
+    isLoadingJokes ||
+    isLoadingQuotes
+  )
     return <div className='mt-20 text-center'>Loading...</div>;
 
   const allContentResp = {
     songs: songs,
     youtube: youtube,
     jokes: jokes,
-    facts: [],
     quotes: quotes,
-    news: [],
   };
 
   const content = responseAndRewardList.map((el) => {

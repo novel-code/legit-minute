@@ -17,7 +17,7 @@ export const defaultData = [
   },
   {
     response: "share your research on linkedin",
-    reward: "4 facts",
+    reward: "6 jokes",
   },
   {
     response: "read top react interview blog",
@@ -41,7 +41,7 @@ export const defaultData = [
   },
   {
     response: "study react documentation",
-    reward: "8 news",
+    reward: "8 jokes",
   },
   {
     response:

@@ -11,7 +11,7 @@ export function useJokes() {
     queryFn: async function getJokes() {
       try {
         const { data } = await axios.get(
-          "https://v2.jokeapi.dev/joke/Any?amount=4"
+          "https://v2.jokeapi.dev/joke/Any?amount=8"
         );
         return data.jokes;
       } catch (error) {
