@@ -25,7 +25,7 @@ export function useYoutubeContent() {
       const currentDay = new Date().getDay() + 1;
       if (localStorage.getItem("day")) {
         if (localStorage.getItem("day") == currentDay) {
-          console.log("localStorage.getItem(day) == currentDay", currentDay);
+          console.log(`day ${currentDay} of week`);
         } else {
           localStorage.setItem("day", currentDay);
         }

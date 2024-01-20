@@ -6,9 +6,7 @@ function JokeListItem({ showReward, rewardTextValue, contentList }) {
   const [showContentList, setShowContentList] = useState(false);
   const [currentObject, setCurrentObject] = useState({});
   function handleRewardClick() {
-    console.log("tes");
     if (!showReward) return;
-    console.log("show content popup with list");
     setShowContentList((prev) => !prev);
   }
   return (
