@@ -1,41 +1,16 @@
-import { useEffect } from "react";
-import { useAuth } from "../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
-
 function Login() {
-  const { isAuthenticated, isLoading, signIn } = useAuth();
-  const navigate = useNavigate();
-
-  useEffect(
-    function () {
-      if (isAuthenticated) {
-        navigate("/response", { replace: true });
-      }
-    },
-    [isAuthenticated, navigate]
-  );
-
-  function googleSignIn() {
-    signIn();
-  }
-
   return (
     <div>
-      <div className='mt-20 text-center '>
-        <h1 className='text-2xl'>Take action and avoid FOMO!</h1>
-        <h3 className='w-[80%] mt-10 ml-auto mr-auto text-sm '>
-          Every minute is legit, so respond and get YouTube videos as a reward.
-        </h3>
-        <p className='fixed text-xs bottom-20 inset-x-10'>
-          {"(youtube permission required)"}
-        </p>
+      <div className='text-center mt-52'>
+        <h1
+          title='Every minute is legit, so respond and get rewarded'
+          className='text-3xl tracking-wide'
+        >
+          Take action and avoid FOMO!
+        </h1>
       </div>
-      <button
-        disabled={isLoading}
-        className='fixed px-2 py-2 text-center duration-300 rounded-lg inset-x-10 bottom-8 lg:hover:bg-stone-900 bg-stone-800'
-        onClick={googleSignIn}
-      >
-        {isLoading ? "Loading..." : "Sign In With Google"}
+      <button className='fixed px-2 py-4 font-semibold tracking-wide text-center duration-300 rounded-lg inset-x-10 lg:inset-x-1/3 md:inset-x-96 bottom-8 lg:hover:bg-stone-900 bg-stone-800'>
+        {"Okay"}
       </button>
     </div>
   );

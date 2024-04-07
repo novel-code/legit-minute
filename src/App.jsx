@@ -9,6 +9,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import supabase from "./services/supabase";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const queryClient = new QueryClient({
@@ -38,7 +39,7 @@ function App() {
                 <Route path='/reward' element={<Reward />} />
               </Route>
               <Route path='login' element={<Login />} />
-              <Route path='*' element={<p>Page Not Found</p>} />
+              <Route path='*' element={<NotFound />} />
             </Routes>
           </BrowserRouter>
           <Toaster
