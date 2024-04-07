@@ -13,3 +13,5 @@ time machine
 golden minute
 gimmek gold
 legit minute
+
+dev
